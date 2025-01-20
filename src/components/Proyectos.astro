@@ -1,0 +1,77 @@
+<section class="bg-white dark:bg-gray-900 mt-2">
+  <div class="container h-auto px-6 mx-auto py-16 mt-8 lg:py-8 lg:mt-4">
+    <h1 
+      class="text-2xl font-semibold text-center text-gray-800 capitalize lg:text-3xl dark:text-white">
+      Proyectos
+    </h1>
+
+    <p 
+      class="mt-4 text-center text-gray-500 dark:text-gray-300">
+      Proyectos funcionales para clientes reales
+    </p>
+
+    <div class="grid grid-cols-1 gap-8 mt-8 xl:gap-12 md:grid-cols-2 xl:grid-cols-3">
+      <!-- Proyecto 1 -->
+      <div 
+        class="overflow-hidden bg-cover rounded-lg cursor-pointer h-96 w-full group"
+        style="background-image:url('https://firebasestorage.googleapis.com/v0/b/mardigioda.appspot.com/o/portfolio%2Ffondo.jpg?alt=media&token=6cb07fb2-3592-47ab-9cd7-1318cf2bb947')">
+        <div class="flex flex-col justify-center w-full h-full px-8 py-4 transition-opacity duration-700 opacity-0 group-hover:opacity-100 backdrop-blur-sm bg-gray-800/60">
+          <a href="https://mardigioia.netlify.app/" target="_blank" class="mt-4 text-xl font-semibold text-white capitalize">Mardigioia Eventos</a>
+          <p class="mt-2 text-lg tracking-wider text-blue-400 uppercase ">Landing page</p>
+        </div>
+      </div>
+
+      <!-- Proyecto 2 -->
+      <div 
+        class="overflow-hidden bg-cover rounded-lg cursor-pointer h-96 group"
+        style="background-image:url('https://firebasestorage.googleapis.com/v0/b/canteras-nini.appspot.com/o/1.jpeg?alt=media&token=2fb0a81f-50fe-44be-be11-4ccdf698f226')">
+        <div class="flex flex-col justify-center w-full h-full px-8 py-4 transition-opacity duration-700 opacity-0 group-hover:opacity-100 backdrop-blur-sm bg-gray-800/60">
+          <a href="https://canteranini.netlify.app/" target="_blank" class="mt-4 text-xl font-semibold text-white capitalize">Cantera Nini</a>
+          <p class="mt-2 text-lg tracking-wider text-blue-400 uppercase ">Aza sas</p>
+        </div>
+      </div>
+
+      <!-- Proyecto 3 -->
+      <div 
+        class="overflow-hidden bg-cover rounded-lg cursor-pointer h-96 group"
+        style="background-image:url('https://images.unsplash.com/photo-1531403009284-440f080d1e12?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80')">
+        <div class="flex flex-col justify-center w-full h-full px-8 py-4 transition-opacity duration-700 opacity-0 group-hover:opacity-100 backdrop-blur-sm bg-gray-800/60">
+          <h2 class="mt-4 text-xl font-semibold text-white capitalize">Ton’s of mobile mockup</h2>
+          <p class="mt-2 text-lg tracking-wider text-blue-400 uppercase ">Mockups</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+  
+  <script>
+  // Esperamos a que el DOM esté completamente cargado
+  document.addEventListener('DOMContentLoaded', () => {
+    // Seleccionamos los elementos que se animarán
+    const elements = document.querySelectorAll('.scroll-animate');
+
+    // Configuramos el Intersection Observer
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            // Añadimos clases de transición para una aparición más gradual
+            entry.target.style.transition = 'opacity 1.5s ease-out, transform 1.5s ease-out';
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+            observer.unobserve(entry.target); // Detenemos la observación del elemento ya animado
+          }
+        });
+      },
+      { threshold: 0.1 } // El 10% del elemento debe estar visible
+    );
+
+    // Aplicamos estilos iniciales a los elementos
+    elements.forEach((el) => {
+      el.style.opacity = '0'; // Inicialmente invisible
+      el.style.transform = 'translateY(20px)'; // Más desplazamiento inicial
+      observer.observe(el);
+    });
+  });
+</script>
+  

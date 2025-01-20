@@ -1,0 +1,92 @@
+---
+---
+
+<nav class="sticky top-0 z-40 w-full flex-none bg-gray-300 bg-transparent fade-in-left">
+    <div class="max-w-8xl mx-auto">
+      <div class="py-4">
+        <div class="relative flex items-center">
+            <div><h2 class="text-md text-blue-500 font-semibold italic ml-6 lg:ml-20">Servicios Digitales</h2>
+            </div>
+          <div class="relative hidden lg:flex items-center ml-auto">
+            <nav class="text-md font-semibold italic">
+              <ul class="flex space-x-10">
+                <li><a class="text-blue-500" href="/">Acerca de mi</a></li>
+                <li><a class="text-blue-500" href="https://www.linkedin.com/in/giulianoangeleri?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="">Linkedin</a></li>
+                <li><a class="text-blue-500" href="https://github.com/KamelotDeveloper" target="_blank">GitHub</a></li>
+              </ul>
+            </nav>
+            <div class="w-8 h-8 overflow-hidden mx-12 border-2 border-gray-400 rounded-full">
+                <img src="avatar.jpg" class="object-cover w-full h-full" alt="avatar">
+            </div>
+          </div>
+          <div class="flex lg:hidden ml-auto">
+            <button id="menu-toggle" class="block focus:outline-none z-50 mr-8">
+              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+              </svg>
+            </button>
+          </div>
+        
+      </div>
+    </div>
+    
+    <div id="menu" class="fixed inset-y-0 left-0 z-40 w-3/4 bg-gray-500 text-white transform -translate-x-full transition-transform lg:hidden">
+        <div class="pt-20 px-8">
+        <nav class="text-md font-semibold italic">
+          <ul class="space-y-4 mb-6">
+            <li><a class="text-blue-400" href="/">Acerca de mi</a></li>
+            <li><a class="text-blue-400" href="https://www.linkedin.com/in/giulianoangeleri?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="">Linkedin</a></li>
+            <li><a class="text-blue-400" href="https://github.com/KamelotDeveloper" target="_blank">GitHub</a></li>
+          </ul>
+        </nav>
+        <div class="w-12 h-12 overflow-hidden border-2 border-gray-400 rounded-full">
+            <img src="avatar.jpg" class="object-cover w-full h-full" alt="avatar">
+        </div>
+      </div>
+    </div>
+    <div id="menu-overlay" class="fixed inset-0 z-30 bg-black opacity-50 hidden lg:hidden"></div>
+  </nav>
+  
+  <script>
+    document.getElementById('menu-toggle').addEventListener('click', function() {
+      var menu = document.getElementById('menu');
+      var overlay = document.getElementById('menu-overlay');
+      var isOpen = menu.classList.contains('translate-x-0');
+      menu.classList.toggle('translate-x-0', !isOpen);
+      menu.classList.toggle('-translate-x-full', isOpen);
+      overlay.classList.toggle('hidden', isOpen);
+    });
+  
+    document.getElementById('menu-overlay').addEventListener('click', function() {
+      var menu = document.getElementById('menu');
+      var overlay = document.getElementById('menu-overlay');
+      menu.classList.add('-translate-x-full');
+      menu.classList.remove('translate-x-0');
+      overlay.classList.add('hidden');
+    });
+  </script>
+<style>
+  /* Define la animación fadeInLeft */
+  @keyframes fadeInLeft {
+    0% {
+      opacity: 0;
+      transform: translateX(-20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  /* Aplica la animación a una clase personalizada */
+  .fade-in-left {
+    animation: fadeInLeft 1.5s ease-out forwards;
+  }
+  </style>
+                   
+
+
+
+
+
+                      

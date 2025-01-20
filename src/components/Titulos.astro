@@ -1,0 +1,82 @@
+<div class="ml-32 mt-28 w-48 h-48 md:w-64 md:h-64 mt-2 mb-32 ml-28 lg:ml-24">
+  <div class="carousel-container relative mx-auto w-auto h-auto">
+    <!-- Primera Imagen -->
+    <div class="carousel-item absolute w-24 h-24 md:w-32 md:h-32 rounded-full overflow-hidden border-2 border-white">
+      <img 
+        src="https://firebasestorage.googleapis.com/v0/b/mardigioda.appspot.com/o/portfolio%2FCertificado%20Community.png?alt=media&token=14cd634e-f565-49ee-9c8c-650f5a1b6a5c" 
+        alt="Image 1" 
+        class="w-full h-full object-cover cursor-pointer" 
+        data-full-image="https://firebasestorage.googleapis.com/v0/b/mardigioda.appspot.com/o/portfolio%2FCertificado%20Community.png?alt=media&token=14cd634e-f565-49ee-9c8c-650f5a1b6a5c">
+    </div>
+    <!-- Segunda Imagen -->
+    <div class="carousel-item absolute w-24 h-24 md:w-32 md:h-32 rounded-full overflow-hidden border-2 border-white">
+      <img 
+        src="https://firebasestorage.googleapis.com/v0/b/mardigioda.appspot.com/o/portfolio%2FCertificado.jpg?alt=media&token=dd05ec11-3ced-403d-9b45-326763711393" 
+        alt="Image 2" 
+        class="w-full h-full object-cover cursor-pointer" 
+        data-full-image="https://firebasestorage.googleapis.com/v0/b/mardigioda.appspot.com/o/portfolio%2FCertificado.jpg?alt=media&token=dd05ec11-3ced-403d-9b45-326763711393">
+    </div>
+  </div>
+</div>
+
+<!-- Galería emergente -->
+<div id="gallery-modal" class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center hidden z-50">
+  <img id="gallery-image" class="max-w-full max-h-full transition-transform transform scale-90">
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const items = document.querySelectorAll(".carousel-item");
+    const modal = document.getElementById("gallery-modal");
+    const modalImage = document.getElementById("gallery-image");
+    const baseRadius = 100; // Radio base
+    const rotationSpeed = 0.01; // Velocidad de rotación
+    let angle = 0;
+
+    // Función para actualizar la posición del carrusel
+    function updateCarousel() {
+      const radius = window.innerWidth < 768 ? baseRadius / 1.5 : baseRadius;
+      const centerX = radius;
+      const centerY = radius;
+
+      items.forEach((item, index) => {
+        const theta = (Math.PI * 2 * index) / items.length + angle;
+        const x = centerX + radius * Math.cos(theta) - item.offsetWidth / 2;
+        const y = centerY + radius * Math.sin(theta) - item.offsetHeight / 2;
+        item.style.transform = `translate(${x}px, ${y}px)`;
+      });
+
+      angle += rotationSpeed; // Incrementamos el ángulo
+      requestAnimationFrame(updateCarousel);
+    }
+
+    updateCarousel();
+
+    // Funcionalidad de galería emergente
+    items.forEach(item => {
+      const img = item.querySelector("img");
+      img.addEventListener("click", () => {
+        const fullImageSrc = img.getAttribute("data-full-image");
+        modalImage.src = fullImageSrc;
+        modal.classList.remove("hidden");
+        setTimeout(() => {
+          modalImage.classList.add("scale-100");
+        }, 50); // Pequeño delay para que la animación sea fluida
+      });
+    });
+
+    // Cierre de la galería al hacer clic fuera
+    modal.addEventListener("click", (e) => {
+      if (e.target === modal || e.target === modalImage) {
+        modalImage.classList.remove("scale-100");
+        setTimeout(() => {
+          modal.classList.add("hidden");
+          modalImage.src = ""; // Limpia la imagen
+        }, 200);
+      }
+    });
+  });
+</script>
+
+
+

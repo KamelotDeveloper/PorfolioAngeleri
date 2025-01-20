@@ -1,0 +1,47 @@
+---
+import Header from '../components/Header.astro';
+
+const { currentLocale } = Astro;
+console.log({ currentLocale });
+---
+
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Porfolio Angeleri Giuliano</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+    <script src="//code.tidio.co/your-tidio-script.js" async></script>  
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const htmlElement = document.documentElement;
+        const themeToggle = document.getElementById('theme-toggle');
+    
+        // Verifica el tema actual desde localStorage
+        if (localStorage.getItem('theme') === 'dark') {
+          htmlElement.classList.add('dark');
+        }
+    
+        // Alternar tema al hacer clic
+        themeToggle?.addEventListener('click', () => {
+          if (htmlElement.classList.contains('dark')) {
+            htmlElement.classList.remove('dark');
+            localStorage.setItem('theme', 'light');
+          } else {
+            htmlElement.classList.add('dark');
+            localStorage.setItem('theme', 'dark');
+          }
+        });
+      });
+    </script>
+  </head>
+  <body class="bg-gray-100 text-gray-800 overflow-x-hidden">
+    <Header />
+    <main class="flex flex-col items-center justify-center p-4 max-w-screen-xl mx-auto">
+      <!-- Aquí se inserta el contenido de las páginas que usan este layout -->
+      <slot />
+    </main>
+  </body>
+</html>
+

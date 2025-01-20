@@ -1,0 +1,48 @@
+<div class="ml-28 relative flex mt-64 lg:mt-0 justify-center mr-28">
+  <!-- Botón Acerca de mí -->
+  <button 
+    id="about-button" 
+    class="bg-blue-500 text-white py-2 px-6 rounded-lg text-lg font-semibold hover:bg-blue-600 focus:outline-none">
+    Acerca de mí
+  </button>
+</div>
+
+<!-- Modal emergente -->
+<div id="about-modal" class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center hidden z-50">
+  <div class="bg-white p-4 sm:p-6 rounded-lg max-w-md w-full mx-4 text-center relative">
+    <!-- Botón de cierre -->
+    <button id="close-button" class="absolute top-2 right-2 text-gray-500 hover:text-black focus:outline-none">✖</button>
+    <!-- Título -->
+    <h2 class="text-lg sm:text-xl font-bold mb-4">Acerca de mí</h2>
+    <!-- Texto del modal -->
+    <p id="about-text" class="text-gray-700 text-justify text-sm sm:text-base leading-relaxed">
+      Soy un Community Manager con 2 años de experiencia en la gestión de marcas y asesoramiento estratégico. He desarrollado e implementado calendarios de contenido efectivos, destacándome en la creación y edición de materiales que conectan con el público y potencian la presencia digital de las empresas.
+
+      Mi enfoque se basa en la dedicación, una comunicación clara y una constante orientación hacia los objetivos. Siempre busco innovar, lo que me ha llevado a expandir mis habilidades al desarrollo de páginas web. Diseño landing pages y portafolios digitales para profesionales como abogados, arquitectos, contadores, y más, ayudándoles a destacar en el entorno digital con soluciones personalizadas y funcionales.
+
+      Estoy comprometido con ofrecer un trabajo de calidad y en constante evolución para adaptarme a las necesidades del mercado.
+    </p>
+  </div>
+</div>
+
+  
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const aboutButton = document.getElementById("about-button");
+      const modal = document.getElementById("about-modal");
+      const closeButton = document.getElementById("close-button");
+  
+      // Mostrar el modal al hacer clic en el botón "Acerca de mí"
+      aboutButton.addEventListener("click", () => {
+        modal.classList.remove("hidden");
+      });
+  
+      // Cerrar el modal al hacer clic en el botón "✖" o fuera del modal
+      modal.addEventListener("click", (e) => {
+        if (e.target === modal || e.target === closeButton) {
+          modal.classList.add("hidden");
+        }
+      });
+    });
+  </script>
+  
